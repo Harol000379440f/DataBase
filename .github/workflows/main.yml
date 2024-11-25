@@ -21,14 +21,14 @@ jobs:  #Jobs P
           echo "Comenzando la construcción de la imagen Docker..."
           DOCKER_USERNAME=$(echo "${{ secrets.DOCKER_USERNAME }}" | tr '[:upper:]' '[:lower:]')
           echo "Utilizando nombre de usuario de Docker: $DOCKER_USERNAME"
-          docker build -t $DOCKER_USERNAME/dockerfile-postgres:latest .
+          docker build -t $DOCKER_USERNAME/Dockerfile-postgres:latest .
           echo "Construcción de la imagen Docker completada."
           echo "Listando imágenes Docker disponibles..."
           docker images
       - name: Escanear Imagen Docker con Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ secrets.DOCKER_USERNAME }}/dockerfile-postgres:latest
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/Dockerfile-postgres:latest
           # Ajusta los niveles de severidad según sea necesario
           severity: CRITICAL,HIGH
           ignore-unfixed: true
@@ -39,7 +39,7 @@ jobs:  #Jobs P
         run: |
           echo "Comenzando la publicación de la imagen Docker..."
           DOCKER_USERNAME=$(echo "${{ secrets.DOCKER_USERNAME }}" | tr '[:upper:]' '[:lower:]')
-          docker push $DOCKER_USERNAME/dockerfile-postgres:latest
+          docker push $DOCKER_USERNAME/Dockerfile-postgres:latest
           echo "Publicación de la imagen Docker completada."
       - name: Pruebas Unitarias del Pipeline Docker
         if: success()
