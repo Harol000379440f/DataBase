@@ -1,0 +1,11 @@
+
+# Usar la imagen oficial de PostgreSQL
+FROM postgres:14
+
+# Configurar variables de entorno para PostgreSQL
+ENV POSTGRES_USER=cinema_user
+ENV POSTGRES_PASSWORD=cinema_pass
+ENV POSTGRES_DB=cinema_db
+
+# Copiar el script de inicialización al directorio de entrada de PostgreSQL
+COPY init.sql /docker-entrypoint-initdb.d/
