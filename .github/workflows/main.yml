@@ -21,7 +21,7 @@ jobs:  #Jobs P
           echo "Comenzando la construcción de la imagen Docker..."
           DOCKER_USERNAME=$(echo "${{ secrets.DOCKER_USERNAME }}" | tr '[:upper:]' '[:lower:]')
           echo "Utilizando nombre de usuario de Docker: $DOCKER_USERNAME"
-          docker build -t $DOCKER_USERNAME/Dockerfile-postgres:latest .
+          docker build -t $DOCKER_USERNAME/dockerfile-postgres:latest .
           echo "Construcción de la imagen Docker completada."
           echo "Listando imágenes Docker disponibles..."
           docker images
