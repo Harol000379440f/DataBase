@@ -25,7 +25,7 @@ jobs:  #Jobs
           echo "Utilizando nombre de usuario de Docker: $DOCKER_USERNAME"
           IMAGE_NAME="$DOCKER_USERNAME/dockerfile-postgres:latest"
           echo "Construyendo la imagen con el nombre: $IMAGE_NAME"
-          docker build -t $IMAGE_NAME .
+          docker build -f Dockerfile-postgres -t $IMAGE_NAME .
           echo "Construcción de la imagen Docker completada."
           echo "Listando imágenes Docker disponibles..."
           docker images
